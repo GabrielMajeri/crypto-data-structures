@@ -7,6 +7,7 @@ Rust implementations of some common data structures used in cryptocurrencies
 ## Data structurs
 
 - Hash Pointers
+- Block Chains
 
 ## References
 
