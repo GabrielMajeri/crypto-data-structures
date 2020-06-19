@@ -1,5 +1,6 @@
 use std::collections::hash_map::DefaultHasher;
 use std::hash::{Hash, Hasher};
+use std::ops::{Deref, DerefMut};
 
 /// Hashes a block of data using the default hasher.
 fn hash<T: Hash>(data: &T) -> u64 {
@@ -43,6 +44,20 @@ impl<T: Hash> AsRef<T> for HashPointer<T> {
 
 impl<T: Hash> AsMut<T> for HashPointer<T> {
     fn as_mut(&mut self) -> &mut T {
+        &mut self.data
+    }
+}
+
+impl<T: Hash> Deref for HashPointer<T> {
+    type Target = T;
+
+    fn deref(&self) -> &Self::Target {
+        &self.data
+    }
+}
+
+impl<T: Hash> DerefMut for HashPointer<T> {
+    fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.data
     }
 }
