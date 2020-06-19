@@ -12,6 +12,7 @@ fn hash<T: Hash>(data: &T) -> u64 {
 ///
 /// If the computed hash of the data is different from the stored value,
 /// one can deduce the data has been modified.
+#[derive(Hash)]
 pub struct HashPointer<T: Hash> {
     hash: u64,
     data: Box<T>,
